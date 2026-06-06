@@ -113,6 +113,13 @@ Output:
 ```
 
 ---
+## Algorithm used
+
+* Greedy Agorithm
+* Graphs
+* Sorting
+  
+
 
 ## 🧠 Future Improvements
 
