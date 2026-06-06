@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stress Aware Task Scheduler🧠</title>
+    <link rel="stylesheet" href="main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<!-- ✅ FIXED HERE -->
+<body class="dashboard-page">
+
+    <!-- ✅ NEW CAPTION -->
+    <div id="introCaption">Welcome to Stress Aware Scheduler 🌿</div>
+
+    <h1>Stress Aware Task Scheduler</h1>
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <p id="welcome" style="margin:0;"></p>
+        <button id="logoutBtn" type="button">Logout</button>
+    </div>
+
+    <div class="container">
+
+        <!-- Add Task -->
+        <div class="box">
+            <h2>📝 Add Task</h2>
+            <form id="taskForm" autocomplete="off">
+                <input type="text" id="taskInput" placeholder="Task name" required>
+                <input type="number" id="taskTime" placeholder="Duration (hours)" min="1" required>
+                <button id="addBtn" type="submit">Add Task</button>
+            </form>
+        </div>
+
+        <!-- Smart Timetable -->
+        <div class="box">
+            <h2>📅 Smart Timetable</h2>
+            <div class="stress-wrap">
+                <label for="stressLevel"><b>Stress level</b></label>
+                <select id="stressLevel">
+                    <option value="calm">Calm</option>
+                    <option value="normal">Normal</option>
+                    <option value="stressed">Stressed</option>
+                    <option value="very_stressed">Very stressed</option>
+                </select>
+                <div id="stressTip" class="stress-tip"></div>
+            </div>
+            <button id="generateBtn" type="button">Generate</button>
+            <pre id="schedule"></pre>
+        </div>
+
+        <!-- Task List -->
+        <div class="box">
+            <h2>✅ Your Tasks</h2>
+            <div class="progress-wrap">
+                <div id="progressText"></div>
+                <pre id="progressBarText"></pre>
+            </div>
+            <div id="taskList"></div>
+        </div>
+
+        <!-- Breathing Exercise -->
+        <div class="box">
+            <h2>🌬️ Breathing Exercise</h2>
+            <div class="breath-controls">
+                <button id="breathStartBtn" type="button">Start</button>
+                <button id="breathStopBtn" type="button" class="secondary" style="display:none;">Stop</button>
+            </div>
+            <div id="breathPhaseText" class="breath-text"></div>
+            <div id="breathCountdownText" class="breath-text"></div>
+            <div id="breathOrb" class="breath-orb idle"></div>
+            <div id="breathInstruction" class="breath-tip"></div>
+        </div>
+
+        <!-- Stress Score Calculator -->
+        <div class="box">
+            <h2>🧠 Stress Score Calculator</h2>
+            <label for="moodHistoryInput"><b>Mood history (1-5, comma separated)</b></label>
+            <input id="moodHistoryInput" type="text" placeholder="e.g., 2,3,2,4,3" />
+
+            <label for="sleepHoursInput"><b>Sleep hours (avg per day)</b></label>
+            <input id="sleepHoursInput" type="number" min="0" max="24" step="0.1" placeholder="e.g., 6.5" />
+
+            <button id="calcStressBtn" type="button">Calculate Stress Score</button>
+            <pre id="stressScoreOutput"></pre>
+        </div>
+
+        <!-- Weekly Report Generator -->
+        <div class="box">
+            <h2>📊 Weekly Report Generator</h2>
+            <p style="margin-top:0; font-size:14px;">Shows stress scores from the last 7 calendar days (including today). Use “Calculate Stress Score” first to save today’s data.</p>
+            <button id="weeklyReportBtn" type="button">Generate Weekly Report</button>
+            <pre id="weeklyReportOutput"></pre>
+        </div>
+
+        <!-- Productivity Stats Graph -->
+        <div class="box">
+            <h2>📈 Productivity Stats</h2>
+            <p class="chart-subtitle">Tasks completed and focus hours over the week.</p>
+            <div class="chart-wrap">
+                <canvas id="productivityChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Mood Graph -->
+        <div class="box">
+            <h2>😊 Mood Graph</h2>
+            <p class="chart-subtitle">Mood levels (1-10) trend across the week.</p>
+            <div class="chart-wrap">
+                <canvas id="moodChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Stress Meter -->
+        <div class="box">
+            <h2>🔥 Stress Meter</h2>
+            <div class="meter-row">
+                <span>Current stress level</span>
+                <strong id="stressMeterValue">0/100</strong>
+            </div>
+            <div class="meter-track">
+                <div id="stressMeterFill" class="meter-fill meter-low"></div>
+            </div>
+            <div class="meter-labels">
+                <span>Low</span><span>Moderate</span><span>High</span>
+            </div>
+        </div>
+
+        <!-- Breakout -->
+        <div class="box full-width">
+            <h2>🛌 Breakout Session Recommendations</h2>
+            <div id="breakoutCards" class="breakout-grid"></div>
+        </div>
+
+    </div>
+
+    <script src="main.js" defer></script>
+</body>
+</html>

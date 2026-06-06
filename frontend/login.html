@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stress Manager</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<!-- SPLASH SCREEN -->
+<div id="splash">
+    <img src="img.png" class="logo">
+    <p class="caption">
+        "Reduce the stress levels in your life through proper scheduling"
+    </p>
+</div>
+
+<!-- LOGIN / REGISTER BOX -->
+<div class="popup hidden" id="loginBox">
+    <div class="popup-box">
+
+        <h2>Stress Aware Task Scheduler 💙</h2>
+
+        <!-- Toggle Buttons -->
+        <div>
+            <button onclick="showLogin()">Login</button>
+            <button onclick="showRegister()">Register</button>
+        </div>
+
+        <!-- LOGIN -->
+        <div id="loginForm">
+            <input type="text" id="loginUser" placeholder="Enter User ID">
+            <input type="password" id="loginPass" placeholder="Enter Password">
+            <button onclick="loginUser()">Login</button>
+        </div>
+
+        <!-- REGISTER -->
+        <div id="registerForm" class="hidden">
+            <input type="text" id="regUser" placeholder="Create User ID">
+            <input type="password" id="regPass" placeholder="Create Password">
+            <button onclick="registerUser()">Register</button>
+        </div>
+
+    </div>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>
